@@ -1,0 +1,1 @@
+# Strapi-Next-CMS-Headless
