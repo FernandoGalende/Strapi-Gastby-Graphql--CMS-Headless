@@ -1,1 +1,3 @@
-# Strapi-Next-CMS-Headless
+# Strapi application
+
+A quick description of your strapi application
