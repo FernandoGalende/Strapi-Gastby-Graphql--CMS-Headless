@@ -1,21 +1,50 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from "react";
+import { Link, graphql } from "gatsby";
+import Img from "gatsby-image";
+import Layout from "../components/layout";
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+const IndexPage = ({ data }) => {
+  const { allStrapiRestaurants } = data;
+  return (
+    <Layout>
+      <h1>Hi people</h1>
+      <p>Welcome to your new Gatsby site.</p>
+      <p>Now go build something great.</p>
+      {allStrapiRestaurants.edges.map(restaurant => (
+        <li key={restaurant.node.id}>
+          <h3>{restaurant.node.name}</h3>
+          <Img fixed={restaurant.node.image.childImageSharp.fixed}></Img>
+        </li>
+      ))}
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+      <Link to="/page-2/">Go to page 2</Link>
+    </Layout>
+  );
+};
 
-export default IndexPage
+export default IndexPage;
+
+export const PageQuery = graphql`
+  query IndexQuery {
+    allStrapiRestaurants {
+      edges {
+        node {
+          id
+          name
+          description
+          categories {
+            id
+            name
+          }
+          image {
+            childImageSharp {
+              fixed(width: 400) {
+                ...GatsbyImageSharpFixed
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
