@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pubs",
+  "info": {
+    "name": "Pubs"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "puertas": {
+      "type": "integer"
+    }
+  }
+}

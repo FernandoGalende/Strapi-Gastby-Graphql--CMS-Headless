@@ -15,9 +15,12 @@
       "unique": true
     },
     "restaurants": {
-      "via": "categories",
       "collection": "restaurant",
+      "via": "categories",
       "dominant": true
+    },
+    "calles": {
+      "type": "string"
     }
   }
 }
